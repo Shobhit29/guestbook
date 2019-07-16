@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Build code, docker Image & helm chart'
+				script {
+				   sh(script: helm install ./helm --tiller-namespace development --namespace development --name test,returnStatus: true) == 0
+				}
             }
         }
         stage('Test') {
