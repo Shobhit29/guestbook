@@ -1,0 +1,10 @@
+name: guestbook
+version: 0.0.1
+description: guestbook
+keywords:
+- guestbook
+sources:
+- https://github.com/kubernetes/examples/tree/master/guestbook
+maintainers:
+ - name: Ganendra
+   email: bindukattamanchi.c@gmail.com
