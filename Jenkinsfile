@@ -1,5 +1,9 @@
 pipeline {
     agent any
+	
+	environment {
+	         DEPLOYABLE_BRANCH = ${env.BRANCH_NAME ==~ /(^master).*/}
+			}
 
     stages {
         stage('Build') {
@@ -15,9 +19,15 @@ pipeline {
             }
         }
         stage('Deploy') {
+		    when {
+			       expression { "$DEPLOYABLE_BRANCH".toBoolean() }
+				 }
             steps {
                 echo 'Deploying....'
+				script {
+				   sh 'helm install ./helm --tiller-namespace development --namespace development --name test'
+				   }
+               }
             }
         }
     }
-}
