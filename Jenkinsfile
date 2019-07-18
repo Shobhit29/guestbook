@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Build code, docker Image & helm chart'
 				script {
-				   sh 'helm install ./helm --tiller-namespace development --namespace development --name test'			}
+				   sh 'helm install upgrade test ./helm --tiller-namespace development --namespace development'			}
             }
         }
         stage('Test') {
