@@ -23,7 +23,7 @@ pipeline {
 			       expression { "$DEPLOYABLE_BRANCH".toBoolean() }
 				 }
             steps {
-                echo 'Deploying....'
+                echo 'Deploying'
 				script {
 				   sh 'helm install ./helm --tiller-namespace development --namespace development --name test'
 				   }
